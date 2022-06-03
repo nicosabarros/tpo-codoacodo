@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Retacería López</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7d8fbd336e.js" crossorigin="anonymous"></script>
+    <script>
+        function validate_send() {
+            if (document.fvalida.nombre.value.length == 0) {
+                alert("Escribí tu nombre")
+                document.fvalida.nombre.focus()
+                return 0;
+            }
+
+            if (document.fvalida.email.value.length == 0) {
+                alert("Escribí tu correo electrónico")
+                document.fvalida.email.focus()
+                return 0;
+            }
+
+            telefono = document.fvalida.phone.value
+            if (telefono.length == 0) {
+                alert("Escribí tu celular")
+                document.fvalida.phone.focus()
+                return 0;
+            } else {
+                telefono = validarEntero(telefono)
+                document.fvalida.phone.value = telefono
+                if (telefono == "") {
+                    alert("Solo podés escribir números")
+                    document.fvalida.phone.focus()
+                    return 0;
+                } else {
+                    if (document.fvalida.phone.value.length !== 10 ) {
+                        alert("El número debe tener 10 caracteres")
+                        document.fvalida.phone.focus()
+                        return 0;
+                    }
+                }
+            }
+            
+
+            if (fvalida.engagement[0].checked == true || 
+                fvalida.engagement[1].checked == true ||
+                fvalida.engagement[2].checked == true){
+            } else{
+                alert("Completá el campo ¿Cómo nos conociste?")
+                return 0;
+            }
+
+            if (document.fvalida.consulta.value.length == 0) {
+                alert("Escribí tu consulta o comentario")
+                document.fvalida.consulta.focus()
+                return 0;
+            }
+
+            alert("Muchas gracias por enviar el formulario");
+            document.fvalida.submit();
+        }
+        
+        function validarEntero(valor) {
+            valor = parseInt(valor)
+
+            if (isNaN(valor)) {
+                return ""
+            } else {
+                return valor
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="overlay"></div>
+        <input type="checkbox" id="hamburger-input" class="burger-shower">
+        <label id="hamburger-menu" for="hamburger-input">
+            <nav id="sidebar-menu">
+                <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="products.html">Productos</a></li>
+                <li><a href="contact.html" class="smallactive">Dónde estamos</a></li>
+                </ul>
+            </nav>
+        </label>
+        <header class="header">
+            <img src="img/retaceria lopez blanco-07.png" alt="" id="nav-logo">  
+            <nav class="navbar">
+                <a href="index.html">Inicio</a>
+                <a href="products.html">Productos</a>
+                <a href="contact.html" class="active">Dónde estamos</a>
+            </nav>
+        </header>
+        <main class="content" id="contact-content">
+            <section>
+                <h2>
+                    Cómo llegar
+                </h2>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1431.477045151019!2d-58.1378658667401!3d-32.22380406742847!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x179be5d4999484eb!2zUmV0YWNlcsOtYSBMw7NwZXo!5e0!3m2!1ses-419!2sar!4v1653533033823!5m2!1ses-419!2sar" width="450" height="300" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <ul class="contact-list">
+                    <li>Andrade 158 (esquina Noailles), Colón, Entre Ríos</li>
+                    <li>Horario de atención:</li>
+                    <li>Lunes a viernes: 9 a 12 y 16:30 a 19:30</li>
+                    <li>Sábados: 9:30 a 12:30</li>
+                </ul>
+            </section>
+            <section class="form-section">
+                <h2>
+                    Formulario de contacto
+                </h2>
+                <form action="" name="fvalida" method="get">
+                    <table class="table-form">
+                        <tr>
+                            <td><label for="nombre">Nombre:</label></td>
+                            <td><input type="text" name="nombre" id="nombre" maxlength="30"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="email">Correo electrónico:</label></td>
+                            <td><input type="email" name="email" id="email" maxlength="30"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="phone">Celular:</label></td>
+                            <td><input type="text" name="phone" id="phone" maxlength="10" placeholder="(sin el 0 ni el 15)"></td>
+                        </tr>
+                        <tr>
+                            <td>¿Cómo nos conociste?</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input type="radio" name="engagement" id="recomend" value="Recomendación"><label for="recomend"> Recomendación</label>
+                            <input type="radio" name="engagement" id="social-media" value="Redes sociales"><label for="social-media"> Redes sociales</label>
+                            <input type="radio" name="engagement" id="advertising" value="Publicidad"><label for="advertising"> Publicidad</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="consulta">Consulta/comentario:</label></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><textarea id="consulta" name="consulta" rows="4" cols="45" placeholder="Escribí tu consulta o comentario"></textarea></td>
+                        </tr>
+                        <tr><td><br></td></tr>
+                        <tr>
+                            <td colspan="2" id="btn-cell"><input type="button" id="btn" onclick="validate_send()" value="Enviar"></td>
+                        </tr>
+                    </table>
+                </form>
+            </section>
+        </main>
+        <footer class="footer">
+            <nav>
+                <a href="https://www.facebook.com/Retacer%C3%ADa-L%C3%B3pez-106378184994204" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.instagram.com/retaceria_lopez/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://wa.me/5493447555854" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+            </nav>
+        </footer>
+    </div>
+</body>
+</html>
